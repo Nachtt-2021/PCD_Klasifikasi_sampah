@@ -4,6 +4,8 @@ import cv2
 from tensorflow.keras.models import load_model
 import logging
 import streamlit as st
+import tensorflow as tf
+import urllib.request
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -16,7 +18,9 @@ except ImportError as e:
     st.error("Gagal mengimpor pustaka OpenCV. Periksa log untuk detail.")
 
 # Load model yang telah dilatih
-model = load_model('Nachtt-2021/PCD_Klasifikasi_sampah/commit/model_klasifikasi_sampah.h5')
+url = 'https://drive.google.com/drive/folders/1ssmoFUL9zmzpzejm2HRPmuXzlqJ29lDl?usp=drive_link'
+urllib.request.urlretrieve(url, 'model_klasifikasi_sampah.h5')
+model = tf.keras.models.load_model('model_klasifikasi_sampah.h5')
 
 # Daftar label kelas
 classes = ['Kaca', 'Kardus', 'Kertas', 'Logam', 'Plastik', 'Residu']
