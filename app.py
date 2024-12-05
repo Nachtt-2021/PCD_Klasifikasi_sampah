@@ -16,7 +16,7 @@ except ImportError as e:
     st.error("Gagal mengimpor pustaka OpenCV. Periksa log untuk detail.")
 
 # Load model yang telah dilatih
-model = load_model('model_klasifikasi_sampah.h5')
+model = load_model('models/model_klasifikasi_sampah.h5')
 
 # Daftar label kelas
 classes = ['Kaca', 'Kardus', 'Kertas', 'Logam', 'Plastik', 'Residu']
